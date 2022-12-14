@@ -44,8 +44,4 @@ jobs:
           else
             IMAGE_TAG=${{github.sha}}
           fi
-          if [ -z "${{ steps.get-chosen-tag.outputs.tag }}" ] && [ -z "${{ steps.tag_version.outputs.new_tag }}" ]; then
-            IMAGE_TAG=${{github.sha}}
-          fi
-          IMAGE_TAG=${IMAGE_TAG##*/}
-          echo ::set-output name=image::$IMAGE_TAG
+          echo $IMAGE_TAG
