@@ -32,3 +32,20 @@ jobs:
           tag: ${{ steps.tag_version.outputs.new_tag }}
           name: Release ${{ steps.tag_version.outputs.new_tag }}
           body: ${{ steps.tag_version.outputs.changelog }}
+          release_branches: .*
+          fetch_all_tags: true
+      - name: get relevant tag
+        id: get-actual-tag
+        run: |
+          if [ -z "${{ steps.get-chosen-tag.outputs.tag }}" ] ; then
+            IMAGE_TAG=${{ steps.tag_version.outputs.new_tag }}
+          elif [ -z "${{ steps.tag_version.outputs.new_tag }}" ]; then
+            IMAGE_TAG=${{ steps.get-chosen-tag.outputs.tag }}
+          else
+            IMAGE_TAG=${{github.sha}}
+          fi
+          if [ -z "${{ steps.get-chosen-tag.outputs.tag }}" ] && [ -z "${{ steps.tag_version.outputs.new_tag }}" ]; then
+            IMAGE_TAG=${{github.sha}}
+          fi
+          IMAGE_TAG=${IMAGE_TAG##*/}
+          echo ::set-output name=image::$IMAGE_TAG
