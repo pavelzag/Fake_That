@@ -3,6 +3,18 @@ on:
   push:
     branches:
       - master
+  workflow_dispatch:
+    inputs:
+      bump:
+        description: 'Bump Type (choose value only if you did not choose an existing tag)'
+        type: choice
+        options:
+        - patch
+        - minor
+        - major
+    branches:
+      - master
+      - hotfix/**
 jobs:
   build:
     runs-on: ubuntu-latest
