@@ -22,13 +22,16 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v3
 
-      - name: Extracting current maestro version
+      - name: Extracting current maestro version1
         run: |
           python3 -c "from maestro import __version__ ; print(__version__)" > current_tag
           cat current_tag
           echo "current_tag=$(cat current_tag)" >> $GITHUB_ENV
-          echo "${{ env.current_tag }}"
           echo "uuid=pavel" >> $GITHUB_ENV
+
+      - name: Extracting current maestro version2
+        run: |
+          echo "${{ env.current_tag }}"
           echo "${{ env.uuid }}"
 
 #      - uses: actions/checkout@v2
