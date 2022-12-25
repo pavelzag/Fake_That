@@ -23,7 +23,7 @@ jobs:
       - name: Extracting current maestro version
         run: |
           export PYTHONPATH=''
-          python3 -c "from maestro import __version__ ; print(__version__)"
+          python3 -c "import __version__ ; print(__version__)"
 
 #      - uses: actions/checkout@v2
 #      - name: Bump version and push tag
