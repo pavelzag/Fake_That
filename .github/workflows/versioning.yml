@@ -22,6 +22,8 @@ jobs:
 
       - name: Extracting current maestro version
         run: |
+          echo ${{ env.GITHUB_WORKSPACE }}
+          echo ${{ env.GITHUB_ENV }}
           export PYTHONPATH='/home/ubuntu/actions-runner/_work/'
           python3 -c "from maestro import __version__ ; print(__version__)"
 
