@@ -21,13 +21,9 @@ jobs:
     steps:
       - name: Checkout Code
         uses: actions/checkout@v3
-        
+
       - name: Extracting current maestro version
         run: |
-          echo "${{ env.GITHUB_WORKSPACE }}"
-          echo "${{ env.GITHUB_ENV }}"
-          echo "${{ env.GITHUB_REF }}"
-          export PYTHONPATH='/home/ubuntu/actions-runner/_work/'
           python3 -c "from maestro import __version__ ; print(__version__)"
 
 #      - uses: actions/checkout@v2
