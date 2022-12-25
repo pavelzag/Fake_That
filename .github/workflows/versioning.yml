@@ -22,8 +22,8 @@ jobs:
 
       - name: Extracting current maestro version
         run: |
-          export PYTHONPATH=''
-          python3 -c "import __version__ ; print(__version__)"
+          export PYTHONPATH='/home/ubuntu/actions-runner/_work/'
+          python3 -c "from maestro import __version__ ; print(__version__)"
 
 #      - uses: actions/checkout@v2
 #      - name: Bump version and push tag
