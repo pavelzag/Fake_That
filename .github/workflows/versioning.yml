@@ -28,6 +28,8 @@ jobs:
           cat current_tag
           echo "current_tag=$(cat current_tag)" >> $GITHUB_ENV
           echo "${{ env.current_tag }}"
+          echo "uuid=pavel" >> $GITHUB_ENV
+          echo "${{ env.uuid }}"
 
 #      - uses: actions/checkout@v2
 #      - name: Bump version and push tag
