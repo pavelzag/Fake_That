@@ -25,7 +25,7 @@ jobs:
       - name: Extracting current maestro version
         run: |
           python3 -c "from maestro import __version__ ; print(__version__)"
-          echo "current_tag=python3 -c "from maestro import __version__ ; print(__version__)" >> $GITHUB_ENV
+          echo "current_tag=python3 -c "from maestro import __version__ ; print(__version__)"" >> $GITHUB_ENV
           echo "${{ env.current_tag }}"
 
 #      - uses: actions/checkout@v2
