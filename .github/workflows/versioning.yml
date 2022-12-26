@@ -26,7 +26,7 @@ jobs:
         run: |
           python3 -c "from maestro import __version__ ; print(__version__)" > current_tag
           cat current_tag
-          echo "current_tag=tests/maestro/$(cat current_tag)" >> $GITHUB_ENV
+          echo "current_tag=tests/$(cat current_tag)" >> $GITHUB_ENV
         
 
 #      - name: Tagging the release
