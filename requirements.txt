@@ -13,3 +13,4 @@ PyYAML==5.4
 six==1.11.0
 text-unidecode==1.2
 Werkzeug==0.0.5
+Semver==2.13
