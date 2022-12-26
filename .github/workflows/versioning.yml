@@ -27,28 +27,32 @@ jobs:
           python3 -c "from maestro import __version__ ; print(__version__)" > current_tag
           cat current_tag
           echo "current_tag=tests/maestro/$(cat current_tag)" >> $GITHUB_ENV
+          
 
       - name: Extracting current maestro version2
         run: |
           echo "${{ env.current_tag }}"
+          git status # Ensure there are no other changes - local or commited
+          git tag tests/maestro/v${{ env.current_tag }}
+          git push origin tests/maestro/v${{ env.current_tag }}
 
-      - uses: actions/checkout@v2
-      - name: Bump version and push tag
-        id: tag_version
-        uses: mathieudutour/github-tag-action@v6.1
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          custom_tag: ${{ env.current_tag }}
-
-
-      - name: Create a GitHub release
-        uses: ncipollo/release-action@v1
-        with:
-          tag: ${{ steps.tag_version.outputs.new_tag }}
-          name: Release ${{ steps.tag_version.outputs.new_tag }}
-          body: ${{ steps.tag_version.outputs.changelog }}
-          release_branches: .*
-          fetch_all_tags: true
+#      - uses: actions/checkout@v2
+#      - name: Bump version and push tag
+#        id: tag_version
+#        uses: mathieudutour/github-tag-action@v6.1
+#        with:
+#          github_token: ${{ secrets.GITHUB_TOKEN }}
+#          custom_tag: ${{ env.current_tag }}
+#
+#
+#      - name: Create a GitHub release
+#        uses: ncipollo/release-action@v1
+#        with:
+#          tag: ${{ steps.tag_version.outputs.new_tag }}
+#          name: Release ${{ steps.tag_version.outputs.new_tag }}
+#          body: ${{ steps.tag_version.outputs.changelog }}
+#          release_branches: .*
+#          fetch_all_tags: true
 
 
 #      - name: get relevant tag
