@@ -39,7 +39,7 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           default_bump: ${{ github.event.inputs.bump }}
-          tag_prefix: "tests/maestro/"
+          custom_tag: "tests/maestro/"${{ env.current_tag }}"
 
 
       - name: Create a GitHub release
