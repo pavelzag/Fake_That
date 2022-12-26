@@ -38,8 +38,8 @@ jobs:
         uses: mathieudutour/github-tag-action@v6.1
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          default_bump: ${{ github.event.inputs.bump }}
-#          custom_tag: "tests/maestro/"${{ env.current_tag }}"
+#          default_bump: ${{ github.event.inputs.bump }}
+          custom_tag: "tests/maestro/"${{ env.current_tag }}"
 
 
       - name: Create a GitHub release
