@@ -38,7 +38,6 @@ jobs:
         uses: mathieudutour/github-tag-action@v6.1
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-#          default_bump: ${{ github.event.inputs.bump }}
           custom_tag: ${{ env.current_tag }}
 
 
@@ -46,6 +45,7 @@ jobs:
         uses: ncipollo/release-action@v1
         with:
           tag: ${{ steps.tag_version.outputs.new_tag }}
+          tag_prefix: 
           name: Release ${{ steps.tag_version.outputs.new_tag }}
           body: ${{ steps.tag_version.outputs.changelog }}
           release_branches: .*
